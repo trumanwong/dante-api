@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  position-api:
+    container_name: dante-api
+    image: trumanwl/dante-go:1.4.3
+    command:
+      - /bin/bash
+      - -c
+      - |
+        /etc/init.d/sockd start
+        service supervisor start
+    ports:
+      - "2022:80"
+      - "2020:2020"
+    restart: always
+    volumes:
+      - ../:/workspace
+      - ./dante-server/sockd.conf:/etc/sockd.conf
+      - ./dante-server/sockd:/etc/init.d/sockd
+      - ./dante-server/pam:/etc/pam.d/sockd
+      - ./supervisor:/etc/supervisor
+    networks:
+      - web
+    tty: true
+    privileged: true
+networks:
+  web:
+    driver: bridge

@@ -1,0 +1,4 @@
+http_port: 80
+env: debug
+command:
+  sockd: /etc/init.d/sockd
