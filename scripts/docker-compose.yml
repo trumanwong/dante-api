@@ -15,11 +15,11 @@ services:
       - "2020:2020"
     restart: always
     volumes:
-      - ../:/workspace
       - ./dante-server/sockd.conf:/etc/sockd.conf
       - ./dante-server/sockd:/etc/init.d/sockd
       - ./dante-server/pam:/etc/pam.d/sockd
       - ./supervisor:/etc/supervisor
+      - ../:/workspace
     networks:
       - web
     tty: true

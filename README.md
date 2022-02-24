@@ -6,6 +6,8 @@
 
 ```shell
 git clone https://github.com/trumanwong/dante-api.git
+chmod +x dante-api/cmd/server
+chmod +x dante-api/scripts/dante-server/sockd
 cd dante-api/scripts && docker-compose up -d
 ```
 
